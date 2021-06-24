@@ -15,21 +15,12 @@ namespace PlayerNetwork
 
         public override void NetworkStart()
         {
-            Move();
+            Begin();
         }
 
-        public void Move()
+        public void Begin()
         {
-            if (NetworkManager.Singleton.IsServer)
-            {
-                var randomPosition = GetRandomPositionOnPlane();
-                transform.position = randomPosition;
-                Position.Value = randomPosition;
-            }
-            else
-            {
-                SubmitPositionRequestServerRpc();
-            }
+            SubmitPositionRequestServerRpc();
         }
 
         [ServerRpc]
@@ -40,7 +31,7 @@ namespace PlayerNetwork
 
         static Vector3 GetRandomPositionOnPlane()
         {
-            return new Vector3(Random.Range(-3f, 3f), 1f, Random.Range(-3f, 3f));
+            return new Vector3(0f, 0f, 0f);
         }
 
         void Update()

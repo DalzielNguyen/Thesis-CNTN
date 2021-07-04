@@ -41,7 +41,7 @@ namespace PlayerNetwork
 
         static void SubmitNewPosition()
         {
-            if (GUILayout.Button(NetworkManager.Singleton.IsServer ? "Begin" : "Request Position Change"))
+            if (GUILayout.Button(NetworkManager.Singleton.IsServer ? "Move" : "Request Position Change"))
             {
                 if (NetworkManager.Singleton.ConnectedClients.TryGetValue(NetworkManager.Singleton.LocalClientId,
                     out var networkedClient))
@@ -49,8 +49,8 @@ namespace PlayerNetwork
                     var player = networkedClient.PlayerObject.GetComponent<PlayerNetworkingController>();
                     if (player)
                     {
-                        player.Begin();
-                        print("Begin");
+                        player.Move();
+                        print("asdasd");
                     }
                 }
             }
